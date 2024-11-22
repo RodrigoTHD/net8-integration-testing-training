@@ -1,0 +1,6 @@
+@MyApp.MinimalHostingModel_HostAddress = http://localhost:5208
+
+GET {{MyApp.MinimalHostingModel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
