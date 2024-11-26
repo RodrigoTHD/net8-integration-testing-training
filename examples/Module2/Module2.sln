@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.WebHostModel", "MyApp.WebHostModel\MyApp.WebHostModel.csproj", "{2D1C01C7-BE70-4AC8-9D41-147DE946328E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.WebHostModel", "MyApp.WebHostModel\MyApp.WebHostModel.csproj", "{2D1C01C7-BE70-4AC8-9D41-147DE946328E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.MinimalHostingModel", "MyApp.MinimalHostingModel\MyApp.MinimalHostingModel.csproj", "{A6FDABD0-CCB6-4AC9-90FD-9FCA8370B416}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.MinimalHostingModel", "MyApp.MinimalHostingModel\MyApp.MinimalHostingModel.csproj", "{A6FDABD0-CCB6-4AC9-90FD-9FCA8370B416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.WebHostModel.IntegrationTests", "MyApp.WebHostModel.IntegrationTests\MyApp.WebHostModel.IntegrationTests.csproj", "{DC99AD97-5D4A-4734-B675-C5D81D55164C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.WebHostModel.IntegrationTests", "MyApp.WebHostModel.IntegrationTests\MyApp.WebHostModel.IntegrationTests.csproj", "{DC99AD97-5D4A-4734-B675-C5D81D55164C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.MinimalHostingModel.IntegrationTests", "MyApp.MinimalHostingModel.IntegrationTests\MyApp.MinimalHostingModel.IntegrationTests.csproj", "{330C7FB1-0330-4351-8287-4643D123BDAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.MinimalHostingModel.IntegrationTests", "MyApp.MinimalHostingModel.IntegrationTests\MyApp.MinimalHostingModel.IntegrationTests.csproj", "{330C7FB1-0330-4351-8287-4643D123BDAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.EnvironmentConfigForTesting", "MyApp.EnvironmentConfigForTesting\MyApp.EnvironmentConfigForTesting.csproj", "{D16FD321-CAA1-479F-92B4-13383A1D5791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.EnvironmentConfigForTesting.IntegrationTests", "MyApp.EnvironmentConfigForTesting.IntegrationTests\MyApp.EnvironmentConfigForTesting.IntegrationTests.csproj", "{72FB0BAE-7BD5-43C6-9303-10D56232AF2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D0036D9A-9D25-4F6F-B17A-8CC7E66B247D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C1BA7858-71F0-4521-9FFC-2A7D8B4BB62D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +41,25 @@ Global
 		{330C7FB1-0330-4351-8287-4643D123BDAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{330C7FB1-0330-4351-8287-4643D123BDAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{330C7FB1-0330-4351-8287-4643D123BDAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D16FD321-CAA1-479F-92B4-13383A1D5791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16FD321-CAA1-479F-92B4-13383A1D5791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16FD321-CAA1-479F-92B4-13383A1D5791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16FD321-CAA1-479F-92B4-13383A1D5791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72FB0BAE-7BD5-43C6-9303-10D56232AF2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72FB0BAE-7BD5-43C6-9303-10D56232AF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72FB0BAE-7BD5-43C6-9303-10D56232AF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72FB0BAE-7BD5-43C6-9303-10D56232AF2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D1C01C7-BE70-4AC8-9D41-147DE946328E} = {C1BA7858-71F0-4521-9FFC-2A7D8B4BB62D}
+		{A6FDABD0-CCB6-4AC9-90FD-9FCA8370B416} = {C1BA7858-71F0-4521-9FFC-2A7D8B4BB62D}
+		{DC99AD97-5D4A-4734-B675-C5D81D55164C} = {D0036D9A-9D25-4F6F-B17A-8CC7E66B247D}
+		{330C7FB1-0330-4351-8287-4643D123BDAB} = {D0036D9A-9D25-4F6F-B17A-8CC7E66B247D}
+		{D16FD321-CAA1-479F-92B4-13383A1D5791} = {C1BA7858-71F0-4521-9FFC-2A7D8B4BB62D}
+		{72FB0BAE-7BD5-43C6-9303-10D56232AF2A} = {D0036D9A-9D25-4F6F-B17A-8CC7E66B247D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A09BAC91-218B-401B-840E-2FE9807FB6CD}
