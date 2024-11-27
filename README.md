@@ -42,10 +42,9 @@ This repository contains test projects examples for the .NET ecosystem used in t
 
 #### Module 3: Dependency Injection and Service Mocking
 
-1. Introduction to Dependency Injection in .NET
-2. Overview of mocking libraries in .NET
-3. Using mocking libraries to Mock Dependencies
-4. Advanced Dependency Injection with HttpClient
+1 Introduction to Dependency Injection in .NET
+2 Overview of mocking libraries in .NET
+3 Advanced Dependency Injection
 
 #### Module 4: HTTP Client Testing and Route Verification
 
