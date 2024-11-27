@@ -1,0 +1,6 @@
+@MyApp.ServiceMocking_HostAddress = http://localhost:5085
+
+GET {{MyApp.ServiceMocking_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
