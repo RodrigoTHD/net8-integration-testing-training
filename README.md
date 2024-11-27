@@ -1,6 +1,29 @@
 # Training: Integration Testing in .NET 8
 
-This repository contains examples for the .NET 8 test projects used in the `Integration Testing in .NET 8` course.
+This repository contains test projects examples for the .NET ecosystem used in the `Integration Testing in .NET 8` course.
+
+## Learning Objectives
+
+- Understand and define the purpose of integration testing.
+- Identify benefits and challenges of integration testing.
+- Organize test files, folders, and test data effectively.
+- Integrate the main project and manage test dependencies.
+- Compare MSTest, xUnit and NUnit, understanding similarities and differences.
+- Set up and write integration tests using Nunit.
+- Use WebApplicationFactory for ASP.NET Core applications.
+- Set up test services and mock dependencies.
+- Understand route groups in Minimal APIs in .NET.
+- Group and test routes in Minimal APIs.
+- Utilize test lifecycle features in NUnit ([SetUp], [TearDown]).
+- Write and manage async integration tests in .NET.
+- Implement async setup and teardown methods.
+- Avoid pitfalls in asynchronous testing.
+- Understand BDD and write feature files with Cucumber.
+- Use SpecFlow for integration test execution.
+- Decide between real and mocked dependencies in tests.
+- Configure Dependency Injection for integration tests.
+- Use mocking tools and techniques effectively.
+- Integrate reporting tools for test results.
 
 ## Table of Contents
 
@@ -14,14 +37,15 @@ This repository contains examples for the .NET 8 test projects used in the `Inte
 #### Module 2: ASP.NET Core Integration Testing Fundamentals
 
 1. Working with ASP.NET Core TestHost
-2. WebApplicationFactory in .NET 8
+2. WebApplicationFactory in .NET
 3. Configuring Test Environments and Dependencies
 
 #### Module 3: Dependency Injection and Service Mocking
 
-1. Introduction to Dependency Injection in .NET 8
-2. Using Moq to Mock Dependencies
-3. Advanced Dependency Injection
+1. Introduction to Dependency Injection in .NET
+2. Overview of mocking libraries in .NET
+3. Using mocking libraries to Mock Dependencies
+4. Advanced Dependency Injection with HttpClient
 
 #### Module 4: HTTP Client Testing and Route Verification
 
@@ -41,7 +65,7 @@ This repository contains examples for the .NET 8 test projects used in the `Inte
 
 1. BDD Concepts
 2. Cucumber and SpecFlow Overview
-3. Setting Up a SpecFlow Project in .NET 8
+3. Setting Up a SpecFlow Project in .NET
 
 #### Module 7: Implementing Step Definitions and Running Integration Tests
 
