@@ -10,9 +10,9 @@ using MyApp.EnvironmentConfigForTesting.Services;
 using System.Net.Http.Headers;
 using System.Reflection;
 
-namespace MyApp.EnvironmentConfigForTesting.IntegrationTests;
+namespace MyApp.EnvironmentConfigForTesting.IntegrationTests.Controllers;
 
-public class FhirTests
+public class FhirControllerTests
 {
     private WebApplicationFactory<Program>? _factory;
     private HttpClient? _client;
@@ -52,6 +52,11 @@ public class FhirTests
         response.EnsureSuccessStatusCode();
     }
 
+    /// <summary>
+    /// Overriding App Settings for Integration Tests.
+    /// Use ConfigureAppConfiguration: Modify or replace configuration sources
+    /// </summary>
+    /// <returns></returns>
     [Test]
     public async Task ShouldOverrideAppSettingsValues()
     {
@@ -78,6 +83,11 @@ public class FhirTests
         response.EnsureSuccessStatusCode();
     }
 
+    /// <summary>
+    /// Override Configuration with appsettings.Test.json.
+    /// Use WebApplicationFactory to Load Specific Configuration Files
+    /// </summary>
+    /// <returns></returns>
     [Test]
     public async Task ShouldOverrideSpecificAppSettingsDynamically()
     {
@@ -127,3 +137,4 @@ public class FhirTests
         response.EnsureSuccessStatusCode();
     }
 }
+
