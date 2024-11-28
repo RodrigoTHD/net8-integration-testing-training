@@ -50,6 +50,7 @@ public class NotificationControllerTests
                 services.AddScoped(_ => fakeEmailService);
             });
         });
+
         // Create a test client
         var client = factoryWithMock.CreateClient();
 

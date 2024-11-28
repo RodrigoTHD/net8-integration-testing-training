@@ -12,8 +12,7 @@ This repository contains test projects examples for the .NET ecosystem used in t
 - Set up and write integration tests using Nunit.
 - Use WebApplicationFactory for ASP.NET Core applications.
 - Set up test services and mock dependencies.
-- Understand route groups in Minimal APIs in .NET.
-- Group and test routes in Minimal APIs.
+- Test query parameters and headers.
 - Utilize test lifecycle features in NUnit ([SetUp], [TearDown]).
 - Write and manage async integration tests in .NET.
 - Implement async setup and teardown methods.
@@ -48,9 +47,9 @@ This repository contains test projects examples for the .NET ecosystem used in t
 
 #### Module 4: HTTP Client Testing and Route Verification
 
-1. Testing HTTP Endpoints with HttpClient
-2. Route Testing with Minimal APIs and Route Groups
-3. Testing Query Parameters and Request Headers 4
+1. Introduction to HttpClient in .NET
+2. Testing HTTP Endpoints with HttpClient
+3. Testing Query Parameters and Request Headers
 
 #### Module 5: Error Handling, Logging, and Diagnostics
 
