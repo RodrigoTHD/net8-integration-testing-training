@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<ApiServiceOptions>(builder.Configuration.GetSection(typeof(ApiServiceOptions).Name));
 builder.Services.AddScoped<IApiServiceWithTypedClient, ApiServiceWithTypedClient>();
 builder.Services.AddScoped<IApiServiceWithNamedClient, ApiServiceWithNamedClient>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 // Configuring a Typed HttpClient in the DI Container
 builder.Services.AddHttpClient<IApiServiceWithTypedClient, ApiServiceWithTypedClient>((serviceProvider, client) =>
@@ -17,10 +18,12 @@ builder.Services.AddHttpClient<IApiServiceWithTypedClient, ApiServiceWithTypedCl
 });
 
 // Configuring a Named HttpClient in the DI Container
-builder.Services.AddHttpClient("ApiService_ClientName", (serviceProvider, client) =>
+builder.Services.AddHttpClient("dummyjson_client", (serviceProvider, client) =>
 {
     var fhirClientOptions = serviceProvider.GetRequiredService<IOptions<ApiServiceOptions>>().Value;
     client.BaseAddress = new Uri(fhirClientOptions.BaseUrl);
+    client.DefaultRequestHeaders.Add("X-Custom-Header", "CustomValue");
+    client.DefaultRequestHeaders.Add("Authorization", "Bearer some_access_token");
 });
 
 builder.Services.AddControllers();

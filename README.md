@@ -12,7 +12,7 @@ This repository contains test projects examples for the .NET ecosystem used in t
 - Set up and write integration tests using Nunit.
 - Use WebApplicationFactory for ASP.NET Core applications.
 - Set up test services and mock dependencies.
-- Test query parameters and headers.
+- Testing Query Parameters and Request Headers and Status Codes.
 - Utilize test lifecycle features in NUnit ([SetUp], [TearDown]).
 - Write and manage async integration tests in .NET.
 - Implement async setup and teardown methods.
@@ -49,7 +49,7 @@ This repository contains test projects examples for the .NET ecosystem used in t
 
 1. Introduction to HttpClient in .NET
 2. Testing HTTP Endpoints with HttpClient
-3. Testing Query Parameters and Request Headers
+3. Testing Query Parameters and Request Headers and Status Codes
 
 #### Module 5: Error Handling, Logging, and Diagnostics
 

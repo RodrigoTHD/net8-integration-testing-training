@@ -13,7 +13,7 @@ public class ApiServiceWithNamedClient : IApiServiceWithNamedClient
 
     public async Task<T?> GetDataAsync<T>(string route) where T : new()
     {
-        var httpClient = httpClientFactory.CreateClient("ApiService_ClientName");
+        var httpClient = httpClientFactory.CreateClient("dummyjson_client");
         HttpResponseMessage response = await httpClient.GetAsync($"{route.TrimStart('/')}");
         response.EnsureSuccessStatusCode();
         string json = await response.Content.ReadAsStringAsync();

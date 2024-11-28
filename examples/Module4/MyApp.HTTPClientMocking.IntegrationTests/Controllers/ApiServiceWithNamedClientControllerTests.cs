@@ -55,7 +55,7 @@ namespace MyApp.HTTPClientMocking.IntegrationTests.Controllers
                 builder.ConfigureServices(services =>
                 {
                     // Register the named HttpClient mock.
-                    services.AddHttpClient("ApiService_ClientName")
+                    services.AddHttpClient("dummyjson_client")
                             .ConfigurePrimaryHttpMessageHandler(() => mockHttp);
                 });
             });
