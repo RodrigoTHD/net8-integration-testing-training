@@ -41,9 +41,9 @@ This repository contains test projects examples for the .NET ecosystem used in t
 
 #### Module 3: Dependency Injection and Service Mocking
 
-1 Introduction to Dependency Injection in .NET 9
-2 Overview of mocking libraries in .NET 9
-3 Advanced Dependency Injection
+1. Introduction to Dependency Injection in .NET 9
+2. Overview of mocking libraries in .NET 9
+3. Advanced Dependency Injection
 
 #### Module 4: HTTP Client Testing and Route Verification
 
