@@ -7,13 +7,11 @@ using System.Net;
 namespace MyApp.HTTPClientMocking.IntegrationTests.Extra;
 public class HttpClientMockLimitationTest
 {
-    private WebApplicationFactory<Program> factory;
+    private WebApplicationFactory<Program>? factory;
 
     [SetUp]
     public void Setup()
     {
-        // Initialize the WebApplicationFactory
-        factory = new WebApplicationFactory<Program>();
     }
 
     [TearDown]
@@ -45,6 +43,9 @@ public class HttpClientMockLimitationTest
         //    Content = new StringContent("Mocked Data")
         //});
         // =============================================================================================
+
+        // Initialize the WebApplicationFactory
+        factory = new WebApplicationFactory<Program>();
 
         var factoryWithMock = factory.WithWebHostBuilder(builder =>
         {

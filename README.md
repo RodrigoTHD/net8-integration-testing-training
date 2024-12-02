@@ -1,6 +1,6 @@
-# Training: Integration Testing in .NET 8
+# Training: Integration Testing in .NET 9
 
-This repository contains test projects examples for the .NET ecosystem used in the `Integration Testing in .NET 8` course.
+This repository contains test projects examples for the .NET ecosystem used in the `Integration Testing in .NET 9` course.
 
 ## Learning Objectives
 
@@ -14,7 +14,7 @@ This repository contains test projects examples for the .NET ecosystem used in t
 - Set up test services and mock dependencies.
 - Testing Query Parameters and Request Headers and Status Codes.
 - Utilize test lifecycle features in NUnit ([SetUp], [TearDown]).
-- Write and manage async integration tests in .NET.
+- Write and manage async integration tests in .NET 9.
 - Implement async setup and teardown methods.
 - Avoid pitfalls in asynchronous testing.
 - Understand BDD and write feature files with Cucumber.
@@ -31,7 +31,7 @@ This repository contains test projects examples for the .NET ecosystem used in t
 #### Module 1: Introduction to Integration Testing
 
 1. What is Integration Testing?
-2. Setting Up a Testing Environment in .NET 8
+2. Setting Up a Testing Environment in .NET 9
 
 #### Module 2: ASP.NET Core Integration Testing Fundamentals
 
@@ -41,13 +41,13 @@ This repository contains test projects examples for the .NET ecosystem used in t
 
 #### Module 3: Dependency Injection and Service Mocking
 
-1 Introduction to Dependency Injection in .NET
-2 Overview of mocking libraries in .NET
+1 Introduction to Dependency Injection in .NET 9
+2 Overview of mocking libraries in .NET 9
 3 Advanced Dependency Injection
 
 #### Module 4: HTTP Client Testing and Route Verification
 
-1. Introduction to HttpClient in .NET
+1. Introduction to HttpClient in .NET 9
 2. Testing HTTP Endpoints with HttpClient
 3. Testing Query Parameters and Request Headers and Status Codes
 
@@ -63,7 +63,7 @@ This repository contains test projects examples for the .NET ecosystem used in t
 
 1. BDD Concepts
 2. Cucumber and SpecFlow Overview
-3. Setting Up a SpecFlow Project in .NET
+3. Setting Up a SpecFlow Project in .NET 9
 
 #### Module 7: Implementing Step Definitions and Running Integration Tests
 

@@ -15,6 +15,7 @@ public class ErrorHandlingTests
     /// <summary>
     /// Using FakeItEasy with NUnit, simulate a dependency failure and verify that AuthAPI
     /// correctly returns an HTTP 500 status code.
+    /// 
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -55,7 +56,7 @@ public class ErrorHandlingTests
     }
 
     /// <summary>
-    /// Authentication failure, such as incorrect credentials (username or password).
+    /// Verify the authentication failure, such as incorrect credentials (username or password).
     ///
     /// </summary>
     /// <returns></returns>

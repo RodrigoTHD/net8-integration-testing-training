@@ -15,8 +15,6 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task<UserInfo?> LoginUser(LoginInfo loginInfo)
     {
-        ArgumentNullException.ThrowIfNull(nameof(loginInfo));
-
         if (string.IsNullOrWhiteSpace(loginInfo.Username) || string.IsNullOrWhiteSpace(loginInfo.Password))
         {
             throw new ArgumentNullException("User credentials connot be empty.");
