@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace MyApp.WebHostModel.IntegrationTests;
 
@@ -17,7 +15,6 @@ public class WeatherForecastTests
     {
         // Arrange
         var builder = new WebHostBuilder()
-            .UseTestServer()
             .UseStartup<Startup>();
         var server = new TestServer(builder);
         var client = server.CreateClient();
@@ -29,6 +26,7 @@ public class WeatherForecastTests
         response.EnsureSuccessStatusCode();
     }
 
+    [Test]
     public async Task ShouldUseTestServer()
     {
         // Arrange
@@ -53,19 +51,7 @@ public class WeatherForecastTests
             .ConfigureServices(services =>
             {
                 // Add required services (same as in Program.cs)
-                services.AddControllers();
-                services.AddEndpointsApiExplorer();
-            })
-            .Configure(app =>
-            {
-                // Replicate middleware and routing setup
-                app.UseRouting();
-                app.UseAuthorization();
-
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllers();
-                });
+                //TODO: create example with mock
             })
             .UseStartup<Startup>();
         // Create TestServer with WebHostBuilder

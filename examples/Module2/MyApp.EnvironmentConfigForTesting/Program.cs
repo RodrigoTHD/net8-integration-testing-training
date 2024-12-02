@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 // Configure FhirClientOptions in the container.
-builder.Services.Configure<FhirClientOptions>(builder.Configuration.GetSection(FhirClientOptions.Name));
+builder.Services.Configure<FhirClientOptions>(builder.Configuration.GetSection(typeof(FhirClientOptions).Name));
 
 builder.Services.AddScoped<IFhirService, FhirService>((serviceProvider) =>
 {

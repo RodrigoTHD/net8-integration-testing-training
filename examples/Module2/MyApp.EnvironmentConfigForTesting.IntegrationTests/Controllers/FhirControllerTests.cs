@@ -20,7 +20,6 @@ public class FhirControllerTests
     [SetUp]
     public void SetUp()
     {
-
     }
 
     [TearDown]
@@ -31,6 +30,10 @@ public class FhirControllerTests
         _factory?.Dispose();
     }
 
+    /// <summary>
+    /// // Define the Testing Environment to use the custom appSettings for Tests.
+    /// </summary>
+    /// <returns></returns>
     [Test]
     public async Task ShouldConfiguringTestEnvironment()
     {
@@ -38,7 +41,6 @@ public class FhirControllerTests
         _factory = new WebApplicationFactory<Program>()
             .WithWebHostBuilder(builder =>
             {
-                // Define the Testing Environment to use the custom appSettings for Tests.
                 // appsettings.Testing.json
                 builder.UseEnvironment("Testing");
 
@@ -84,8 +86,8 @@ public class FhirControllerTests
     }
 
     /// <summary>
-    /// Override Configuration with appsettings.Test.json.
-    /// Use WebApplicationFactory to Load Specific Configuration Files
+    /// Override Configuration file with appsettings.TestProject.json.
+    /// Use ConfigureServices to customize dependency Injection with new appsettings for testing.
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -109,11 +111,16 @@ public class FhirControllerTests
                     // Load project-specific test settings
                     config.AddJsonFile(Path.Combine(testProjectPath!, "appsettings.TestProject.json"), optional: false, reloadOnChange: true);
                 });
+
                 builder.ConfigureServices(services =>
                 {
                     // Customizing Dependency Injection for Testing
+
+                    // Remove FhirService
                     var descriptor = services.Single(d => d.ServiceType == typeof(IFhirService));
                     services.Remove(descriptor);
+
+                    // Add new FhirService with customized FhirClient
                     services.AddScoped<IFhirService, FhirService>((serviceProvider) =>
                     {
                         // Custom FhirClient with authorization for Tests

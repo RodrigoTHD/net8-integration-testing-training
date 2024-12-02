@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using MyApp.ServiceMocking.Model;
 using MyApp.ServiceMocking.Services;
-using Newtonsoft.Json;
 using System.Text;
+using System.Text.Json;
 
 namespace MyApp.ServiceMocking.IntegrationTests.Controllers;
 
@@ -61,7 +61,7 @@ public class NotificationControllerTests
             Subject = "Notification",
             Body = "Test message"
         };
-        var jsonContent = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
+        var jsonContent = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
 
         // Act
         // Send a POST request
