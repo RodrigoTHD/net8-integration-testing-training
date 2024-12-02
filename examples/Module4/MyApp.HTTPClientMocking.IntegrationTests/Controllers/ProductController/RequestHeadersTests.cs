@@ -43,12 +43,12 @@ public class RequestHeadersTests
         Assert.That(headers, Is.Not.Null);
 
         // Check the custom X-Custom-Header header is correctly set in the HttpClient
-        Assert.That(headers.Contains("X-Custom-Header"), Is.True);
-        Assert.That(headers.GetValues("X-Custom-Header").First(), Is.EqualTo("CustomValue"));
+        Assert.That(headers?.Contains("X-Custom-Header"), Is.True);
+        Assert.That(headers?.GetValues("X-Custom-Header").First(), Is.EqualTo("CustomValue"));
 
         // Check the Authorization header is correctly set in the HttpClient
-        Assert.That(headers.Authorization, Is.Not.Null);
-        Assert.That(headers.Authorization.Scheme, Is.EqualTo("Bearer"));
-        Assert.That(headers.Authorization.Parameter, Is.EqualTo("some_access_token"));
+        Assert.That(headers?.Authorization, Is.Not.Null);
+        Assert.That(headers?.Authorization?.Scheme, Is.EqualTo("Bearer"));
+        Assert.That(headers?.Authorization?.Parameter, Is.EqualTo("some_access_token"));
     }
 }

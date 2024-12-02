@@ -6,7 +6,7 @@ namespace MyApp.HTTPClientMocking.IntegrationTests.Controllers.ProductController
 
 public class QueryParametersTests
 {
-    private WebApplicationFactory<Program> factory;
+    private WebApplicationFactory<Program>? factory;
 
     [SetUp]
     public void Setup()
@@ -32,7 +32,7 @@ public class QueryParametersTests
     public async Task ShouldGetProductsWithSearchParametersReturnsFilteredProducts()
     {
         // Arrange
-        var client = factory.CreateClient();
+        var client = factory!.CreateClient();
         string search = "Powder";
 
         // Act
@@ -48,7 +48,7 @@ public class QueryParametersTests
 
         // Verify that the mock returns the expected response
         Assert.That(apiServiceResponse, Is.Not.Null);
-        Assert.That(apiServiceResponse.Total, Is.EqualTo(2));
+        Assert.That(apiServiceResponse?.Total, Is.EqualTo(2));
     }
 
     [Test]
@@ -70,6 +70,6 @@ public class QueryParametersTests
 
         // Verify that the mock returns the expected response
         Assert.That(apiServiceResponse, Is.Not.Null);
-        Assert.That(apiServiceResponse.Products.Count, Is.EqualTo(3));
+        Assert.That(apiServiceResponse?.Products.Count(), Is.EqualTo(3));
     }
 }
