@@ -6,11 +6,6 @@ namespace MyApp.ServiceMocking.IntegrationTests.Services;
 
 public class NotificationServiceTests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     /// <summary>
     /// Mock an IEmailService dependency that sends emails.
     /// </summary>
@@ -40,10 +35,7 @@ public class NotificationServiceTests
         var result = await notificationService.NotifyAsync(notification);
 
         // Assert
-        // Verify the response status code
-
         Assert.True(result);
-
         // Verify the email service was called correctly
         A.CallTo(() => fakeEmailService.SendEmailAsync(notification.To, notification.Subject, notification.Body))
             .MustHaveHappenedOnceExactly();

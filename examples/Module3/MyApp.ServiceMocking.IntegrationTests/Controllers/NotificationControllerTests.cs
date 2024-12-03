@@ -66,8 +66,6 @@ public class NotificationControllerTests
         // Act
         // Send a POST request
         var response = await client.PostAsync("/Notification/Notify", jsonContent);
-        var responseContent = await response.Content.ReadAsStringAsync();
-
 
         // Assert
         // Verify the response status code

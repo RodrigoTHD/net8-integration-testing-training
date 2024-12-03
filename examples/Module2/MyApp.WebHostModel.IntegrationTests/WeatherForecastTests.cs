@@ -5,63 +5,86 @@ namespace MyApp.WebHostModel.IntegrationTests;
 
 public class WeatherForecastTests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
+    /// <summary>
+    /// Configuring in-memory test server with WebHostBuilder and TestServer.
+    /// 
+    /// </summary>
+    /// <returns></returns>
     [Test]
     public async Task ShouldCreateTestServer()
     {
         // Arrange
+        // Create the WebHostBuilder
         var builder = new WebHostBuilder()
             .UseStartup<Startup>();
+
+        // Create the TestServer for with the build
         var server = new TestServer(builder);
+
+        // Create the test httpClient to perform requests to the TestServer.
         var client = server.CreateClient();
 
         // Act
+        // Send HTTP requests to the in-memory server.
         var response = await client.GetAsync("/WeatherForecast");
 
         // Assert
-        response.EnsureSuccessStatusCode();
+        // Verify the response status is 200 OK
+        Assert.True(response.IsSuccessStatusCode);
     }
 
+    /// <summary>
+    /// Configuring in-memory test server with WebHostBuilder and
+    /// TestServer and TestClient from extensions.
+    /// 
+    /// </summary>
+    /// <returns></returns>
     [Test]
     public async Task ShouldUseTestServer()
     {
         // Arrange
-        var host = new WebHostBuilder()
+        // Create the WebHostBuilder with TestServer
+        var builder = new WebHostBuilder()
             .UseTestServer()
             .UseStartup<Startup>()
             .Start();
 
         // Act
-        var response = await host.GetTestClient().GetAsync("/WeatherForecast");
+        // Get TestClient and send HTTP requests to the in-memory server.
+        var response = await builder.GetTestClient().GetAsync("/WeatherForecast");
 
         // Assert
-        response.EnsureSuccessStatusCode();
+        // Verify the response status is 200 OK
+        Assert.True(response.IsSuccessStatusCode);
     }
 
+    /// <summary>
+    /// Configuring in-memory test server with WebHostBuilder and
+    /// customizations with ConfigureServices.
+    /// 
+    /// </summary>
+    /// <returns></returns>
     [Test]
     public async Task ShouldCreateTestServerWithCustomizations()
     {
         // Arrange
         // Create the TestServer with WebHostBuilder
-        var webHostBuilder = new WebHostBuilder()
+        var builder = new WebHostBuilder()
             .ConfigureServices(services =>
             {
-                // Add required services (same as in Program.cs)
-                //TODO: create example with mock
+                // Add mock services here (same as in Program.cs)
+                // services.AddScoped(_ => mockServiceExample);
             })
-            .UseStartup<Startup>();
-        // Create TestServer with WebHostBuilder
-        var testServer = new TestServer(webHostBuilder);
-        var client = testServer.CreateClient();
+            .UseTestServer()
+            .UseStartup<Startup>()
+            .Start();
 
         // Act
-        var response = await client.GetAsync("/WeatherForecast");
+        // Get TestClient and send HTTP requests to the in-memory server.
+        var response = await builder.GetTestClient().GetAsync("/WeatherForecast");
 
         // Assert
-        response.EnsureSuccessStatusCode();
+        // Verify the response status is 200 OK
+        Assert.True(response.IsSuccessStatusCode);
     }
 }

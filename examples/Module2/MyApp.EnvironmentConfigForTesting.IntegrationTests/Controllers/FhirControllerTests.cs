@@ -31,7 +31,8 @@ public class FhirControllerTests
     }
 
     /// <summary>
-    /// // Define the Testing Environment to use the custom appSettings for Tests.
+    /// Define the Testing Environment to use the custom appSettings for Tests.
+    /// 
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -48,15 +49,18 @@ public class FhirControllerTests
         _client = _factory.CreateClient();
 
         // Act
+        // Send HTTP requests to the in-memory server.
         var response = await _client.GetAsync("Fhir/GetPatients?count=1");
 
         // Assert
-        response.EnsureSuccessStatusCode();
+        // Verify the response status is 200 OK
+        Assert.True(response.IsSuccessStatusCode);
     }
 
     /// <summary>
     /// Overriding App Settings for Integration Tests.
-    /// Use ConfigureAppConfiguration: Modify or replace configuration sources
+    /// Use ConfigureAppConfiguration: Modify or replace configuration sources.
+    /// 
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -79,15 +83,18 @@ public class FhirControllerTests
         _client = _factory.CreateClient();
 
         // Act
+        // Send HTTP requests to the in-memory server.
         var response = await _client.GetAsync("Fhir/GetPatients?count=1");
 
         // Assert
-        response.EnsureSuccessStatusCode();
+        // Verify the response status is 200 OK
+        Assert.True(response.IsSuccessStatusCode);
     }
 
     /// <summary>
     /// Override Configuration file with appsettings.TestProject.json.
     /// Use ConfigureServices to customize dependency Injection with new appsettings for testing.
+    /// 
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -138,10 +145,12 @@ public class FhirControllerTests
         _client = _factory.CreateClient();
 
         // Act
+        // Send HTTP requests to the in-memory server.
         var response = await _client.GetAsync("Fhir/GetPatients?count=1");
 
         // Assert
-        response.EnsureSuccessStatusCode();
+        // Verify the response status is 200 OK
+        Assert.True(response.IsSuccessStatusCode);
     }
 }
 
