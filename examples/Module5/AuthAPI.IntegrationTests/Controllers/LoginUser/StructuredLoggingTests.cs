@@ -62,7 +62,7 @@ public class StructuredLoggingTests
         var jsonContent = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
 
         // Act
-        var response = await client.PostAsync("/api/v1/LoginUser", jsonContent);
+        await client.PostAsync("/api/v1/LoginUser", jsonContent);
 
         // Verify that the log was called by logLevel and message.
         Assert.That(logs.Any(log =>

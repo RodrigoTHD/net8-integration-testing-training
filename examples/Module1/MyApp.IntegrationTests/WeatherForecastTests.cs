@@ -4,7 +4,7 @@ namespace MyApp.IntegrationTests;
 
 public class WeatherForecastUnitTests
 {
-    private WeatherForecast weatherForecast;
+    private WeatherForecast? weatherForecast;
 
     [OneTimeSetUp]
     public void BeforeAll()
@@ -32,7 +32,7 @@ public class WeatherForecastUnitTests
     {
         // Arrange        
         //var weatherForecast = new WeatherForecast();
-        weatherForecast.TemperatureC = 35;
+        weatherForecast!.TemperatureC = 35;
         var expectedTemperatureFResult = 94;
 
 
@@ -50,7 +50,7 @@ public class WeatherForecastUnitTests
         //var weatherForecast = new WeatherForecast();
 
         // Act
-        weatherForecast.TemperatureC = 35;
+        weatherForecast!.TemperatureC = 35;
 
         // Assert
         Assert.That(weatherForecast.TemperatureC, Is.EqualTo(35));
@@ -63,12 +63,13 @@ public class WeatherForecastUnitTests
         //var weatherForecast = new WeatherForecast();
 
         // Act
-        weatherForecast.Summary = "WeatherForecast sumarry...";
+        weatherForecast!.Summary = "WeatherForecast sumarry...";
 
         // Assert
         weatherForecast.Summary
             .Should()
-            .Be("WeatherForecast sumarry...");
-
+            .StartWith("WeatherForecast")
+            .And
+            .EndWith("sumarry...");
     }
 }
