@@ -2,13 +2,12 @@ using AuthAPI.Models;
 using AuthAPI.Services;
 using FakeItEasy;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-
+using RichardSzalay.MockHttp;
 using System.Net;
 using System.Text;
 using System.Text.Json;
 
-namespace AuthAPI.IntegrationTests.Controllers.LoginUserController;
+namespace AuthAPI.IntegrationTests.Controllers.LoginUser;
 
 public class ErrorHandlingTests
 {
@@ -19,10 +18,10 @@ public class ErrorHandlingTests
     /// </summary>
     /// <returns></returns>
     [Test]
-    public async Task ShouldReturnInternalServerErrorWhenLoginUserFails()
+    public async Task ShouldLoginUserReturnInternalServerErrorWhenFails()
     {
         // Arrange
-        // The FakeItEasy library is used to simulate a failing service
+        // The FakeItEasy library is used to simulate a failing service.
         var fakeAuthenticationService = A.Fake<IAuthenticationService>();
         A.CallTo(() => fakeAuthenticationService.LoginUser(A<LoginInfo>.Ignored)).Throws<Exception>();
 
@@ -31,7 +30,7 @@ public class ErrorHandlingTests
             {
                 builder.ConfigureServices(services =>
                 {
-                    // Add fake service
+                    // Add fake service.
                     services.AddScoped(_ => fakeAuthenticationService);
                 });
             });
@@ -51,7 +50,11 @@ public class ErrorHandlingTests
         var response = await client.PostAsync("/api/v1/LoginUser", jsonContent);
 
         // Assert
-        // Verify that the API properly handles the exception and returns a 500 status code
+        // Verify the error message
+        var stringResponse = await response.Content.ReadAsStringAsync();
+        StringAssert.Contains($"Authentication failed for user '{requestBody.Username}'.", stringResponse);
+
+        // Verify that the API properly handles the exception and returns a 500 status code.
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.InternalServerError));
     }
 
@@ -79,8 +82,59 @@ public class ErrorHandlingTests
         // Act
         var response = await client.PostAsync("/api/v1/LoginUser", jsonContent);
 
+
         // Assert
+        // Verify the error message
+        var stringResponse = await response.Content.ReadAsStringAsync();
+        StringAssert.Contains("Invalid username or password", stringResponse);
+
         // Verify that the server responds with 401 Unauthorized to indicate that the credentials provided do not grant access.
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));
+    }
+
+    [Test]
+    public async Task shouldLoginUserReturnGatewayTimeoutWhenServiceTimesOut()
+    {
+        // Arrange
+        // Create a mock HttpMessageHandler
+        var mockHttp = new MockHttpMessageHandler();
+
+        // Setup the mock response for a specific request
+        mockHttp.When("https://dummyjson.com/user/login")
+                .Respond(_ =>
+                {
+                    // Mock httpClient response.
+                    return new HttpResponseMessage(HttpStatusCode.GatewayTimeout);
+                });
+
+        // Use WebApplicationFactory to override HttpClient
+        var factory = new WebApplicationFactory<Program>()
+            .WithWebHostBuilder(builder =>
+            {
+                builder.ConfigureServices(services =>
+                {
+                    // Register the named HttpClient mock.
+                    services.AddHttpClient("dummyjson_client")
+                            .ConfigurePrimaryHttpMessageHandler(() => mockHttp);
+                });
+            });
+
+        var client = factory.CreateClient();
+
+        var requestBody = new LoginInfo
+        {
+            Username = "user",
+            Password = "pass",
+            ExpiresInMins = 10
+        };
+        var jsonContent = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
+
+        // Act
+        // Use the mocked client for testing
+        var response = await client.PostAsync("/api/v1/LoginUser", jsonContent);
+
+        // Assert
+        // Verify that the mock returns the expected statusCode response
+        Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.GatewayTimeout));
     }
 }

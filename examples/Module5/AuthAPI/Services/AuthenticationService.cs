@@ -13,7 +13,7 @@ public class AuthenticationService : IAuthenticationService
         this.httpClientFactory = httpClientFactory;
     }
 
-    public async Task<UserInfo?> LoginUser(LoginInfo loginInfo)
+    public async Task<(UserInfo?, HttpResponseMessage)> LoginUser(LoginInfo loginInfo)
     {
         if (string.IsNullOrWhiteSpace(loginInfo.Username) || string.IsNullOrWhiteSpace(loginInfo.Password))
         {
@@ -35,9 +35,9 @@ public class AuthenticationService : IAuthenticationService
         if (response.IsSuccessStatusCode)
         {
             string json = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<UserInfo>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return (JsonSerializer.Deserialize<UserInfo>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }), response);
         }
 
-        return null;
+        return (null, response);
     }
 }

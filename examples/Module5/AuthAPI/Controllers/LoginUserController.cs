@@ -21,28 +21,36 @@ namespace AuthAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginUser([FromBody][Required] LoginInfo loginInfo)
         {
-            logger.LogInformation("User authentication request initiated.");
+            logger.LogInformation($"User authentication request initiated for user '{loginInfo.Username}'.");
 
             try
             {
-                var userInfo = await authenticationService.LoginUser(loginInfo);
+                var (userInfo, httpResponseMessage) = await authenticationService.LoginUser(loginInfo);
 
-                if (userInfo == null)
+                if (userInfo is UserInfo)
                 {
-                    return UnauthorizedUser(loginInfo);
+                    logger.LogInformation($"Authentication successful for user ID '{userInfo.Id}'.");
+
+                    return Ok(userInfo);
                 }
 
-                logger.LogInformation($"Authentication successful for user ID '{userInfo.Id}'.");
+                if (httpResponseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized || httpResponseMessage.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    return UnauthorizedUserResponse(loginInfo);
+                }
 
-                return Ok(userInfo);
+                return Problem(
+                    title: httpResponseMessage.ReasonPhrase,
+                    statusCode: ((int)httpResponseMessage.StatusCode),
+                    detail: CreateDetailError(loginInfo));
             }
             catch (ArgumentNullException)
             {
-                return UnauthorizedUser(loginInfo);
+                return UnauthorizedUserResponse(loginInfo);
             }
             catch (Exception ex)
             {
-                string message = $"Authentication failed for user '{loginInfo.Username}'. {ex.Message}";
+                string message = $"{CreateDetailError(loginInfo)}. {ex.Message}";
 
                 logger.LogError(message);
 
@@ -50,9 +58,13 @@ namespace AuthAPI.Controllers
             }
         }
 
-        private IActionResult UnauthorizedUser(LoginInfo loginInfo)
+        private string CreateDetailError(LoginInfo loginInfo)
+            => $"Authentication failed for user '{loginInfo.Username}'";
+
+
+        private IActionResult UnauthorizedUserResponse(LoginInfo loginInfo)
         {
-            string message = $"Authentication failed for user '{loginInfo.Username}'. Invalid username or password.";
+            string message = $"{CreateDetailError(loginInfo)}. Invalid username or password.";
 
             logger.LogWarning(message);
 

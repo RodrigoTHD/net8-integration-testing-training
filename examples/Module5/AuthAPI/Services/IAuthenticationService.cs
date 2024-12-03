@@ -4,5 +4,5 @@ namespace AuthAPI.Services;
 
 public interface IAuthenticationService
 {
-    Task<UserInfo?> LoginUser(LoginInfo loginInfo);
+    Task<(UserInfo?, HttpResponseMessage)> LoginUser(LoginInfo loginInfo);
 }
