@@ -7,7 +7,7 @@ public class WeatherForecastTests
 {
     /// <summary>
     /// Configuring in-memory test server with WebHostBuilder and TestServer.
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -30,13 +30,13 @@ public class WeatherForecastTests
 
         // Assert
         // Verify the response status is 200 OK
-        Assert.True(response.IsSuccessStatusCode);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
     }
 
     /// <summary>
     /// Configuring in-memory test server with WebHostBuilder and
     /// TestServer and TestClient from extensions.
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -55,13 +55,13 @@ public class WeatherForecastTests
 
         // Assert
         // Verify the response status is 200 OK
-        Assert.True(response.IsSuccessStatusCode);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
     }
 
     /// <summary>
     /// Configuring in-memory test server with WebHostBuilder and
     /// customizations with ConfigureServices.
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -85,6 +85,6 @@ public class WeatherForecastTests
 
         // Assert
         // Verify the response status is 200 OK
-        Assert.True(response.IsSuccessStatusCode);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
     }
 }

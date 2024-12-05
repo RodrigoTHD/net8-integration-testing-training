@@ -34,7 +34,7 @@ namespace MyApp.MinimalHostingModel.IntegrationTests
 
             // Assert
             // Verify the response status is 200 OK
-            Assert.True(response.IsSuccessStatusCode);
+            Assert.That(response.IsSuccessStatusCode, Is.True);
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace MyApp.MinimalHostingModel.IntegrationTests
 
             // Assert
             // Verify the response status is 200 OK
-            Assert.True(response.IsSuccessStatusCode);
+            Assert.That(response.IsSuccessStatusCode, Is.True);
         }
     }
 }

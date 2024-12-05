@@ -17,11 +17,6 @@ public class FhirControllerTests
     private WebApplicationFactory<Program>? _factory;
     private HttpClient? _client;
 
-    [SetUp]
-    public void SetUp()
-    {
-    }
-
     [TearDown]
     public void TearDown()
     {
@@ -32,7 +27,7 @@ public class FhirControllerTests
 
     /// <summary>
     /// Define the Testing Environment to use the custom appSettings for Tests.
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -54,13 +49,13 @@ public class FhirControllerTests
 
         // Assert
         // Verify the response status is 200 OK
-        Assert.True(response.IsSuccessStatusCode);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
     }
 
     /// <summary>
     /// Overriding App Settings for Integration Tests.
     /// Use ConfigureAppConfiguration: Modify or replace configuration sources.
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -88,13 +83,13 @@ public class FhirControllerTests
 
         // Assert
         // Verify the response status is 200 OK
-        Assert.True(response.IsSuccessStatusCode);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
     }
 
     /// <summary>
     /// Override Configuration file with appsettings.TestProject.json.
     /// Use ConfigureServices to customize dependency Injection with new appsettings for testing.
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -150,7 +145,7 @@ public class FhirControllerTests
 
         // Assert
         // Verify the response status is 200 OK
-        Assert.True(response.IsSuccessStatusCode);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
     }
 }
 

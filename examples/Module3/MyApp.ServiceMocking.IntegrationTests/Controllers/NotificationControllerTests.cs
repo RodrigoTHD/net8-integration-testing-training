@@ -69,7 +69,7 @@ public class NotificationControllerTests
 
         // Assert
         // Verify the response status code
-        Assert.True(response.IsSuccessStatusCode);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
 
         // Verify that the mocked service was called
         A.CallTo(() => fakeEmailService.SendEmailAsync(requestBody.To, requestBody.Subject, requestBody.Body))
