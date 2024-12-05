@@ -15,12 +15,13 @@ namespace AuthAPI.IntegrationTests.StepDefinitions
 
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
         [Given("the first number is (.*)")]
+        //[Given("the first number is {int}")]
         public void GivenTheFirstNumberIs(int number)
         {
             context.FirstNumber = number;
         }
 
-        [Given("the second number is (.*)")]
+        [Given("the second number is {int}")]
         public void GivenTheSecondNumberIs(int number)
         {
             context.SecondNumber = number;
@@ -32,7 +33,7 @@ namespace AuthAPI.IntegrationTests.StepDefinitions
             context.Result = context.FirstNumber + context.SecondNumber;
         }
 
-        [Then("the result should be (.*)")]
+        [Then("the result should be {int}")]
         public void ThenTheResultShouldBe(int result)
         {
             context.Result.Should().Be(result);
