@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AuthAPI\AuthAPI.csproj" />
+    <ProjectReference Include="..\..\..\shared\AuthAPI\AuthAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
