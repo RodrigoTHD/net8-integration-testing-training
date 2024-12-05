@@ -3,7 +3,8 @@
 
 examples-live
 
-.feature.cs
+#ignore SpecFlow files
+*.feature.cs
 
 #ignore CSharp files
 *.log
