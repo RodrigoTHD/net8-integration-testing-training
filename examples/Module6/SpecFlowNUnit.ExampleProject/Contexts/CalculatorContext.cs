@@ -1,4 +1,4 @@
-namespace AuthAPI.IntegrationTests.Contexts;
+namespace SpecFlowNUnit.ExampleProject.Contexts;
 
 public class CalculatorContext
 {

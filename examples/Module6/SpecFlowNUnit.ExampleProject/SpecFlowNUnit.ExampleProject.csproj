@@ -32,8 +32,4 @@
     <Folder Include="Features\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AuthAPI\AuthAPI.csproj" />
-  </ItemGroup>
-
 </Project>
