@@ -71,6 +71,6 @@ public class StructuredLoggingTests
 
         Assert.That(logs.Any(log =>
             log.Key == LogLevel.Warning &&
-            log.Value.Contains($"Authentication failed for user '{requestBody.Username}'. Invalid username or password.")), Is.True);
+            log.Value.Contains($"Authentication failed for user '{requestBody.Username}'. Invalid credentials.")), Is.True);
     }
 }

@@ -14,7 +14,7 @@ public class ErrorHandlingTests
     /// <summary>
     /// Using FakeItEasy with NUnit, simulate a dependency failure and verify that AuthAPI
     /// correctly returns an HTTP 500 status code.
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     [Test]
@@ -86,7 +86,7 @@ public class ErrorHandlingTests
         // Assert
         // Verify the error message
         var stringResponse = await response.Content.ReadAsStringAsync();
-        StringAssert.Contains("Invalid username or password", stringResponse);
+        StringAssert.Contains("Invalid credentials", stringResponse);
 
         // Verify that the server responds with 401 Unauthorized to indicate that the credentials provided do not grant access.
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));

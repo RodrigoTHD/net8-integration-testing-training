@@ -43,7 +43,7 @@ public class DiagnosticsAndTracingTests
         // Assert
         // Verify the error message
         var stringResponse = await response.Content.ReadAsStringAsync();
-        StringAssert.Contains("Invalid username or password", stringResponse);
+        StringAssert.Contains("Invalid credentials", stringResponse);
 
         // Verify that the server responds with 401 Unauthorized to indicate that the credentials provided do not grant access.
         Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Unauthorized));

@@ -63,7 +63,7 @@ namespace AuthAPI.Controllers
 
         private IActionResult UnauthorizedUserResponse(LoginInfo loginInfo)
         {
-            string message = $"{CreateDetailError(loginInfo)}. Invalid username or password.";
+            string message = $"{CreateDetailError(loginInfo)}. Invalid credentials.";
 
             logger.LogWarning(message);
 
