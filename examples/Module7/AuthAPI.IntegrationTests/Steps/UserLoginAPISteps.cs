@@ -40,7 +40,6 @@ public class UserLoginAPISteps
     [When("the user requests the \"(.*)\" endpoint")]
     public async Task WhenTheUserRequestsTheEndpoint(string endpoint)
     {
-        // Create the requestBody
         var jsonContent = new StringContent(
             JsonSerializer.Serialize(userLoginContext.LoginInfo),
             Encoding.UTF8,
@@ -53,12 +52,16 @@ public class UserLoginAPISteps
     public void ThenTheResponseShouldBeOk()
     {
         (userLoginContext.response!.StatusCode).Should().Be(HttpStatusCode.OK);
+
+        LogUtils.ActualResult("The server responds with 200 OK status code");
     }
 
     [Then("the response should be 401 Unauthorized")]
     public void ThenTheResponseShouldBeUnauthorized()
     {
         (userLoginContext.response!.StatusCode).Should().Be(HttpStatusCode.Unauthorized);
+
+        LogUtils.ActualResult("The server responds with 401 Unauthorized status code");
     }
 
     [Then("the response should contain a token")]
@@ -71,6 +74,8 @@ public class UserLoginAPISteps
 
         userInfo.Should().BeOfType<UserInfo>();
         userInfo.AccessToken.Should().NotBeEmpty();
+
+        LogUtils.ActualResult("The response body contains a valid token as expected for successful login");
     }
 
     [Then("the response message should be \"(.*)\"")]
@@ -78,5 +83,7 @@ public class UserLoginAPISteps
     {
         var content = await userLoginContext.response!.Content.ReadAsStringAsync();
         content.Should().Contain(expectedMessage);
+
+        LogUtils.ActualResult("The response body contains the expected message Invalid credentials");
     }
 }

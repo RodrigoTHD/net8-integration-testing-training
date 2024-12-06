@@ -5,6 +5,7 @@ examples-live
 
 #ignore SpecFlow files
 *.feature.cs
+**/*/TestResults
 
 #ignore CSharp files
 *.log
