@@ -4,23 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using MyApp.HTTPClientMocking.Services;
 using System.Net;
 
-namespace MyApp.HTTPClientMocking.IntegrationTests.Extra;
+namespace MyApp.HTTPClientMocking.IntegrationTests.Limitations;
 public class HttpClientMockLimitationTest
 {
-    private WebApplicationFactory<Program>? factory;
-
-    [SetUp]
-    public void Setup()
-    {
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        // Clean up resources
-        factory?.Dispose();
-    }
-
     [Test]
     public async Task ShouldShowHttpClientMockLimitation()
     {
@@ -45,7 +31,7 @@ public class HttpClientMockLimitationTest
         // =============================================================================================
 
         // Initialize the WebApplicationFactory
-        factory = new WebApplicationFactory<Program>();
+        var factory = new WebApplicationFactory<Program>();
 
         var factoryWithMock = factory.WithWebHostBuilder(builder =>
         {

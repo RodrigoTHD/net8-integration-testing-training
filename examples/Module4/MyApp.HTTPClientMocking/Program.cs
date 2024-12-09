@@ -46,6 +46,6 @@ app.MapControllers();
 
 app.Run();
 
-// Make the Program class public using a partial class
+// Expose the implicitly defined Program class to the test project.
 // https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-9.0#basic-tests-with-the-default-webapplicationfactory
 public partial class Program { }

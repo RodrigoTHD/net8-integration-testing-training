@@ -61,6 +61,7 @@ namespace MyApp.HTTPClientMocking.IntegrationTests.Controllers
                 });
             });
 
+            // Create a mocked client for testing
             var client = factoryWithMock.CreateClient();
 
             // Act

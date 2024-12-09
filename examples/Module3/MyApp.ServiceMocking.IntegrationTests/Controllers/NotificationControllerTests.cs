@@ -11,22 +11,6 @@ namespace MyApp.ServiceMocking.IntegrationTests.Controllers;
 
 public class NotificationControllerTests
 {
-    private WebApplicationFactory<Program> _factory;
-
-    [SetUp]
-    public void Setup()
-    {
-        // Initialize the WebApplicationFactory
-        _factory = new WebApplicationFactory<Program>();
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        // Clean up resources
-        _factory?.Dispose();
-    }
-
     /// <summary>
     /// Mock an IEmailService dependency that sends emails
     /// </summary>
@@ -42,7 +26,8 @@ public class NotificationControllerTests
         A.CallTo(() => fakeEmailService.SendEmailAsync(A<string>.Ignored, A<string>.Ignored, A<string>.Ignored)).Returns(true);
 
         // Override the DI service with the mocked instance
-        var factoryWithMock = _factory.WithWebHostBuilder(builder =>
+        var factoryWithMock = new WebApplicationFactory<Program>()
+            .WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
             {
